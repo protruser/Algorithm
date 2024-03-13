@@ -1,24 +1,25 @@
 import sys
 from collections import deque
 input = sys.stdin.readline
-
 N,M = map(int, input().split())
-lst = [[] for _ in range(N+1)]
-count = [0]*(N+1)
-answer = deque()
+A = [[] for _ in range(N+1)]
+indegree = [0]*(N+1)
 
 for _ in range(M):
-    A,B = map(int, input().split())
-    lst[A].append(B)
-    count[B] += 1
+    S,E = map(int, input().split())
+    A[S].append(E)
+    indegree[E] += 1
 
-while len(answer) != N:
-    for i in range(1,N+1):
-        if count[i] == 0:
-            count[i] = -1
-            answer.append(i)
-            for j in lst[i]:
-                count[j] -= 1
+queue = deque()
 
-for i in answer:
-    print(i, end=' ')
+for i in range(1,N+1):
+    if indegree[i] == 0:
+        queue.append(i)
+
+while queue:
+    n = queue.popleft()
+    print(n, end=' ')
+    for i in A[n]:
+        indegree[i] -= 1
+        if indegree[i] == 0:
+            queue.append(i)
