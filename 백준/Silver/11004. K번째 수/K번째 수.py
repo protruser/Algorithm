@@ -1,3 +1,3 @@
-N,K=map(int,input().split())
-lst=sorted(map(int,input().split()))
-print(lst[K-1])
+n,k=map(int,input().split())
+l=sorted(map(int,input().split()))
+print(l[k-1])
