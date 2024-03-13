@@ -1,8 +1,7 @@
 N = int(input())
-A = sorted(map(int, input().split()))
-
-answer = 0
+lst = list(map(int, input().split()))
+lst.sort()
+s = 0
 for i in range(N):
-    answer += sum(A[:i+1])
-
-print(answer)
+    s += sum(lst[:i+1])
+print(s)
