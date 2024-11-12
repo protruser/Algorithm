@@ -1,8 +1,8 @@
 def solution(nums):
     a = len(nums) // 2
-    lst = list(set(nums))
-    if a > len(lst):
-        return len(lst)
+    b = len(list(set(nums)))
+    if a > b:
+        return b
     else:
         return a
     
